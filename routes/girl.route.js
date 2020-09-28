@@ -27,4 +27,14 @@ router.post('/', async (req, res) => {
     
 
 });
+
+// SPECIFIC GIRL
+router.get('/:girlId', async (req, res) => {
+    try {
+        const specificGirl = await Girl.findById(req.params.girlId);
+        res.json(specificGirl);
+    } catch (error) {
+        res.json({message: error });
+    }
+});
 module.exports = router;
