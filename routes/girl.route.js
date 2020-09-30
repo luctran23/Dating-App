@@ -49,4 +49,21 @@ router.delete('/:girlId', async (req, res) => {
     }
 
 });
+
+// UPDATE GIRL
+router.patch('/:girlId', async(req, res) => {
+   
+    try {
+    const updatedGirl = await Girl.updateOne({ _id: req.params.girlId }, 
+        {$set: {
+            name: req.body.name,
+            age: req.body.age,
+            hometown: req.body.hometown
+        } });
+    res.json(updatedGirl);
+    } catch (error) {
+        res.json({ message: err });
+    }
+
+})
 module.exports = router;
