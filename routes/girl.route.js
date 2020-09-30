@@ -37,4 +37,16 @@ router.get('/:girlId', async (req, res) => {
         res.json({message: error });
     }
 });
+
+//Delete GIRL
+router.delete('/:girlId', async (req, res) => {
+    try {
+        const removedGirl = await Girl.deleteOne({ _id: req.params.girlId });
+        res.json(removedGirl);
+    }
+    catch(err) {
+        res.json({ message: err });
+    }
+
+});
 module.exports = router;
