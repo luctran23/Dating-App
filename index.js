@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {console.log('Connected to DB')});
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {console.log('Connected to DB')});
 
 const girlRoute = require('./routes/girl.route');
 

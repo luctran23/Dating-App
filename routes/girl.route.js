@@ -15,8 +15,10 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const girl = new Girl({
         name: req.body.name,
+        imgUrl: req.body.imgUrl,
         age: req.body.age,
-        hometown: req.body.hometown
+        hometown: req.body.hometown,
+        hobbies: req.body.hobbies
     });
     try {
         const savedGirl = await girl.save();
@@ -57,8 +59,10 @@ router.patch('/:girlId', async(req, res) => {
     const updatedGirl = await Girl.updateOne({ _id: req.params.girlId }, 
         {$set: {
             name: req.body.name,
+            imgUrl: req.body.imgUrl,
             age: req.body.age,
-            hometown: req.body.hometown
+            hometown: req.body.hometown,
+            hobbies: req.body.hobbies
         } });
     res.json(updatedGirl);
     } catch (error) {
