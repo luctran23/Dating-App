@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
+var cors = require('cors');
 
 const mongoose = require('mongoose');
 
@@ -12,7 +13,7 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
 const girlRoute = require('./routes/girl.route');
 
 app.use(bodyParser.json());
-
+app.use(cors())
 // ROUTES
 app.get('/', (req, res) => {
     res.send('Hello World!')
